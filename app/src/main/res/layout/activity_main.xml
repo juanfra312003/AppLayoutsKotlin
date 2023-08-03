@@ -163,7 +163,7 @@
             android:padding="10dp"
             android:text=""
             android:textAllCaps="true"
-            android:textColor="@color/blue"
+            android:textColor="@color/black"
             android:textSize="32sp"
             android:textStyle="bold"
             tools:ignore="SpeakableTextPresentCheck" />

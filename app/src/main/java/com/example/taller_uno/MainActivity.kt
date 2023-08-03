@@ -97,30 +97,44 @@ class MainActivity : AppCompatActivity() {
         if (board[positionOnArray] == '-') {
             if (player == 1) {
                 board[positionOnArray] = 'X'
-                player = 2
 
                 //See if with the movement, the player wins
                 val number = checkWinner()
 
-                // Do the changes of the color if the player wins
+                //Make changes of style if the player wins
                 if (number != 0) {
+                    //Win text
+                    binding.textWinner.text = "Player One (X) wins!!!"
+
+                    // Do the changes of the color if the player wins and fill the board for not be available for more movements
                     changeColorButtons(number)
                     board.fill('F')
                 }
+
+                //Change the turn
+                player = 2
 
                 //Return that the player number one was who made the move and it has to be registered
                 return 1
             } else {
                 board[positionOnArray] = 'O'
-                player = 1
+
 
                 //See if with the movement, the player wins
                 val number = checkWinner()
 
-                // Do the changes of the color if the player wins
+                //Make changes of style if the player wins
                 if (number != 0) {
+                    //Win text
+                    binding.textWinner.text = "Player Two (O) wins!!!"
+
+                    // Do the changes of the color if the player wins and fill the board for not be available for more movements
                     changeColorButtons(number)
+                    board.fill('F')
                 }
+
+                //Change the turn
+                player = 1
 
                 //Return that the player number two was who made the move and it has to be registered
                 return 2
@@ -142,18 +156,20 @@ class MainActivity : AppCompatActivity() {
         binding.b9.text = " "
 
         //Reset the color to the buttons
-        binding.b1.setBackgroundColor(Color.parseColor("#2D29B3"))
-        binding.b2.setBackgroundColor(Color.parseColor("#2D29B3"))
-        binding.b3.setBackgroundColor(Color.parseColor("#2D29B3"))
-        binding.b4.setBackgroundColor(Color.parseColor("#2D29B3"))
-        binding.b5.setBackgroundColor(Color.parseColor("#2D29B3"))
-        binding.b6.setBackgroundColor(Color.parseColor("#2D29B3"))
-        binding.b7.setBackgroundColor(Color.parseColor("#2D29B3"))
-        binding.b8.setBackgroundColor(Color.parseColor("#2D29B3"))
-        binding.b9.setBackgroundColor(Color.parseColor("#2D29B3"))
+        binding.b1.setBackgroundColor(Color.parseColor("#5955F7"))
+        binding.b2.setBackgroundColor(Color.parseColor("#5955F7"))
+        binding.b3.setBackgroundColor(Color.parseColor("#5955F7"))
+        binding.b4.setBackgroundColor(Color.parseColor("#5955F7"))
+        binding.b5.setBackgroundColor(Color.parseColor("#5955F7"))
+        binding.b6.setBackgroundColor(Color.parseColor("#5955F7"))
+        binding.b7.setBackgroundColor(Color.parseColor("#5955F7"))
+        binding.b8.setBackgroundColor(Color.parseColor("#5955F7"))
+        binding.b9.setBackgroundColor(Color.parseColor("#5955F7"))
 
         //Reset the board of the game
         board.fill('-')
+
+        binding.textWinner.text = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
