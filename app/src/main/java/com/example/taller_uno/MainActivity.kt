@@ -1,0 +1,240 @@
+package com.example.taller_uno
+
+import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.example.taller_uno.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityMainBinding
+
+    var player = 1
+    var board = charArrayOf('-', '-', '-', '-', '-','-','-','-','-')
+
+    fun checkWinner (): Int {
+        when {
+            //Check the vertical ways to win
+            board[0] == board[3] && board[3] == board[6] && board[6] != '-' -> {
+                return 1
+            }
+            board[1] == board[4] && board[4] == board[7] && board[7] != '-'->{
+                return 2
+            }
+            board[2] == board[5] && board[5] == board[8] && board[8] != '-'->{
+                return 3
+            }
+            //Check the horizontal ways to win
+            board[0] == board[1] && board[1] == board[2] && board[2] != '-'->{
+                return 4
+            }
+            board[3] == board[4] && board[4] == board[5] && board[5] != '-'->{
+                return 5
+            }
+            board[6] == board[7] && board[7] == board[8] && board[8] != '-'->{
+                return 6
+            }
+            //Check the diagonal ways to win
+            board[0] == board[4] && board[4] == board[8] && board[8] != '-'->{
+                return 7
+            }
+            board[2] == board[4] && board[4] == board[6] && board[6] != '-'->{
+                return 8
+            }
+            else -> {
+                return 0
+            }
+        }
+        return 0
+    }
+
+    fun changeColorButtons(number: Int) {
+        when (number) {
+            1 -> {
+                binding.b1.setBackgroundColor(Color.GREEN)
+                binding.b4.setBackgroundColor(Color.GREEN)
+                binding.b7.setBackgroundColor(Color.GREEN)
+            }
+            2 -> {
+                binding.b2.setBackgroundColor(Color.GREEN)
+                binding.b5.setBackgroundColor(Color.GREEN)
+                binding.b8.setBackgroundColor(Color.GREEN)
+            }
+            3 -> {
+                binding.b3.setBackgroundColor(Color.GREEN)
+                binding.b6.setBackgroundColor(Color.GREEN)
+                binding.b9.setBackgroundColor(Color.GREEN)
+            }
+            4 -> {
+                binding.b1.setBackgroundColor(Color.GREEN)
+                binding.b2.setBackgroundColor(Color.GREEN)
+                binding.b3.setBackgroundColor(Color.GREEN)
+            }
+            5 -> {
+                binding.b4.setBackgroundColor(Color.GREEN)
+                binding.b5.setBackgroundColor(Color.GREEN)
+                binding.b6.setBackgroundColor(Color.GREEN)
+            }
+            6 -> {
+                binding.b7.setBackgroundColor(Color.GREEN)
+                binding.b8.setBackgroundColor(Color.GREEN)
+                binding.b9.setBackgroundColor(Color.GREEN)
+            }
+            7 -> {
+                binding.b1.setBackgroundColor(Color.GREEN)
+                binding.b5.setBackgroundColor(Color.GREEN)
+                binding.b9.setBackgroundColor(Color.GREEN)
+            }
+            8 -> {
+                binding.b3.setBackgroundColor(Color.GREEN)
+                binding.b5.setBackgroundColor(Color.GREEN)
+                binding.b7.setBackgroundColor(Color.GREEN)
+            }
+        }
+    }
+
+
+    fun changesByClick (positionOnArray : Int) : Int {
+        if (board[positionOnArray] == '-') {
+            if (player == 1) {
+                board[positionOnArray] = 'X'
+                player = 2
+
+                //See if with the movement, the player wins
+                val number = checkWinner()
+
+                // Do the changes of the color if the player wins
+                if (number != 0) {
+                    changeColorButtons(number)
+                    board.fill('F')
+                }
+
+                //Return that the player number one was who made the move and it has to be registered
+                return 1
+            } else {
+                board[positionOnArray] = 'O'
+                player = 1
+
+                //See if with the movement, the player wins
+                val number = checkWinner()
+
+                // Do the changes of the color if the player wins
+                if (number != 0) {
+                    changeColorButtons(number)
+                }
+
+                //Return that the player number two was who made the move and it has to be registered
+                return 2
+            }
+        }
+        return 0
+    }
+
+    fun resetButtons (){
+        //Quit the text of the buttons
+        binding.b1.text = " "
+        binding.b2.text = " "
+        binding.b3.text = " "
+        binding.b4.text = " "
+        binding.b5.text = " "
+        binding.b6.text = " "
+        binding.b7.text = " "
+        binding.b8.text = " "
+        binding.b9.text = " "
+
+        //Reset the color to the buttons
+        binding.b1.setBackgroundColor(Color.BLUE)
+        binding.b2.setBackgroundColor(Color.BLUE)
+        binding.b3.setBackgroundColor(Color.BLUE)
+        binding.b4.setBackgroundColor(Color.BLUE)
+        binding.b5.setBackgroundColor(Color.BLUE)
+        binding.b6.setBackgroundColor(Color.BLUE)
+        binding.b7.setBackgroundColor(Color.BLUE)
+        binding.b8.setBackgroundColor(Color.BLUE)
+        binding.b9.setBackgroundColor(Color.BLUE)
+
+        //Reset the board of the game
+        board.fill('-')
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.b1.setOnClickListener {
+            val numberReturnPlayerMove = changesByClick(0)
+            if (numberReturnPlayerMove == 1)
+                binding.b1.text = "X"
+            else if (numberReturnPlayerMove == 2)
+                binding.b1.text = "O"
+        }
+
+        binding.b2.setOnClickListener{
+            val numberReturnPlayerMove = changesByClick(1)
+            if (numberReturnPlayerMove == 1)
+                binding.b2.text = "X"
+            else if (numberReturnPlayerMove == 2)
+                binding.b2.text = "O"
+        }
+
+        binding.b3.setOnClickListener{
+            val numberReturnPlayerMove = changesByClick(2)
+            if (numberReturnPlayerMove == 1)
+                binding.b3.text = "X"
+            else if (numberReturnPlayerMove == 2)
+                binding.b3.text = "O"
+        }
+
+        binding.b4.setOnClickListener{
+            val numberReturnPlayerMove = changesByClick(3)
+            if (numberReturnPlayerMove == 1)
+                binding.b4.text = "X"
+            else if (numberReturnPlayerMove == 2)
+                binding.b4.text = "O"
+        }
+
+        binding.b5.setOnClickListener{
+            val numberReturnPlayerMove = changesByClick(4)
+            if (numberReturnPlayerMove == 1)
+                binding.b5.text = "X"
+            else if (numberReturnPlayerMove == 2)
+                binding.b5.text = "O"
+        }
+
+        binding.b6.setOnClickListener{
+            val numberReturnPlayerMove = changesByClick(5)
+            if (numberReturnPlayerMove == 1)
+                binding.b6.text = "X"
+            else if (numberReturnPlayerMove == 2)
+                binding.b6.text = "O"
+        }
+
+        binding.b7.setOnClickListener{
+            val numberReturnPlayerMove = changesByClick(6)
+            if (numberReturnPlayerMove == 1)
+                binding.b7.text = "X"
+            else if (numberReturnPlayerMove == 2)
+                binding.b7.text = "O"
+        }
+
+        binding.b8.setOnClickListener{
+            val numberReturnPlayerMove = changesByClick(7)
+            if (numberReturnPlayerMove == 1)
+                binding.b8.text = "X"
+            else if (numberReturnPlayerMove == 2)
+                binding.b8.text = "O"
+        }
+
+        binding.b9.setOnClickListener{
+            val numberReturnPlayerMove = changesByClick(8)
+            if (numberReturnPlayerMove == 1)
+                binding.b9.text = "X"
+            else if (numberReturnPlayerMove == 2)
+                binding.b9.text = "O"
+        }
+
+        binding.textPlayAgain.setOnClickListener {
+            resetButtons()
+        }
+    }
+}
