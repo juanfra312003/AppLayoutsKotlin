@@ -142,15 +142,15 @@ class MainActivity : AppCompatActivity() {
         binding.b9.text = " "
 
         //Reset the color to the buttons
-        binding.b1.setBackgroundColor(Color.BLUE)
-        binding.b2.setBackgroundColor(Color.BLUE)
-        binding.b3.setBackgroundColor(Color.BLUE)
-        binding.b4.setBackgroundColor(Color.BLUE)
-        binding.b5.setBackgroundColor(Color.BLUE)
-        binding.b6.setBackgroundColor(Color.BLUE)
-        binding.b7.setBackgroundColor(Color.BLUE)
-        binding.b8.setBackgroundColor(Color.BLUE)
-        binding.b9.setBackgroundColor(Color.BLUE)
+        binding.b1.setBackgroundColor(Color.parseColor("#2D29B3"))
+        binding.b2.setBackgroundColor(Color.parseColor("#2D29B3"))
+        binding.b3.setBackgroundColor(Color.parseColor("#2D29B3"))
+        binding.b4.setBackgroundColor(Color.parseColor("#2D29B3"))
+        binding.b5.setBackgroundColor(Color.parseColor("#2D29B3"))
+        binding.b6.setBackgroundColor(Color.parseColor("#2D29B3"))
+        binding.b7.setBackgroundColor(Color.parseColor("#2D29B3"))
+        binding.b8.setBackgroundColor(Color.parseColor("#2D29B3"))
+        binding.b9.setBackgroundColor(Color.parseColor("#2D29B3"))
 
         //Reset the board of the game
         board.fill('-')
