@@ -6,21 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".FrameActivity">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/frameimage">
+
+    </ImageView>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/greetingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@color/white"
         android:background="@color/black"
-        android:textSize="40dp"
-        android:text="Hola Mundo" />
+        android:backgroundTint="#081B5E"
+        android:fontFamily="serif-monospace"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="45dp" />
 
 </FrameLayout>
