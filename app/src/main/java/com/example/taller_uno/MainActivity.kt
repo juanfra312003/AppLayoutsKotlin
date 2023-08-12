@@ -22,22 +22,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun buttonFrameActivity(itemSelected : String){
+    fun buttonFrameActivity(binding : ActivityMainBinding){
+        val itemSelected = binding.spinnerRandomGreet.selectedItem.toString()
         if (itemSelected.isBlank() || itemSelected == " "){
-            Toast.makeText(baseContext, "You must to select one language.", Toast.LENGTH_LONG).show()
+            Toast.makeText(baseContext, "You must to select one language.", Toast.LENGTH_SHORT).show()
         }
         else{
             var intent = Intent (baseContext, FrameActivity::class.java)
-            val greeting : String = when (itemSelected){
-                "Español" -> "Hola."
-                "English" -> "Hello"
-                "Français"->"Salut"
-                "Italiano"->"Ciao"
-                "Português"->"Olá"
-                else -> ""
-            }
-            println(greeting)
-            intent.putExtra("greeting", greeting)
+            intent.putExtra("itemselected", itemSelected)
             startActivity(intent)
         }
 
@@ -47,8 +39,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.buttonTicTacToe.setOnClickListener{buttonTicTacToeAction()}
-        //val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, )
+        binding.buttonRandomGreet.setOnClickListener { buttonFrameActivity(binding) }
         binding.buttonCountries.setOnClickListener{buttonCountriesAction()}
     }
 }

@@ -23,9 +23,10 @@
         android:layout_gravity="center"
         android:background="@color/black"
         android:backgroundTint="#081B5E"
-        android:fontFamily="serif-monospace"
-        android:textAllCaps="false"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textAllCaps="true"
         android:textColor="@color/white"
-        android:textSize="45dp" />
+        android:textAlignment="center"
+        android:textSize="35dp" />
 
 </FrameLayout>
