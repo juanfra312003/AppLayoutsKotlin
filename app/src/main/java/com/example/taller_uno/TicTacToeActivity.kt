@@ -236,6 +236,10 @@ class TicTacToeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTicTacToeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        buttonsAndPlayAgainActions(binding)
+    }
+
+    fun buttonsAndPlayAgainActions(binding : ActivityTicTacToeBinding){
         binding.b1.setOnClickListener { putMovementInBoard(changesByClick(0),0)}
         binding.b2.setOnClickListener{putMovementInBoard(changesByClick(1),1)}
         binding.b3.setOnClickListener{putMovementInBoard(changesByClick(2),2)}
