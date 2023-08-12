@@ -39,5 +39,11 @@ class ListViewActivity : AppCompatActivity() {
 
         val adapter = CountryAdapter(this, countries)
         binding.listview.adapter = adapter
+
+        binding.listview.setOnItemClickListener { adapterView, view, i, l ->
+            val intent = Intent(baseContext, CountryViewActivity::class.java)
+            intent.putExtra("country", countries[i])
+            startActivity(intent)
+        }
     }
 }

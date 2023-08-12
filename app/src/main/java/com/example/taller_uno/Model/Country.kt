@@ -1,11 +1,13 @@
 package com.example.taller_uno.Model
 
+import java.io.Serializable
+
 class Country(
     var name: String,
     var name_int: String,
     var capital: String,
     var acronym: String
-) {
+) :Serializable {
     // Getter y Setter para 'name'
     fun getNameCountry(): String {
         return name
