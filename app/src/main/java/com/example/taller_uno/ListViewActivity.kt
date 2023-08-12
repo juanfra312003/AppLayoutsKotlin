@@ -13,6 +13,21 @@ class ListViewActivity : AppCompatActivity() {
     private lateinit var binding : ActivityListViewBinding
     private val countries = mutableListOf<Country>()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityListViewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        loadCountries()
+
+        val adapter = CountryAdapter(this, countries)
+        binding.listview.adapter = adapter
+
+        binding.listview.setOnItemClickListener { adapterView, view, i, l ->
+            val intent = Intent(baseContext, CountryViewActivity::class.java)
+            intent.putExtra("country", countries[i])
+            startActivity(intent)
+        }
+    }
     fun loadCountries() {
         val json_string = this.assets.open("paises.json").bufferedReader().use{
             it.readText()
@@ -31,19 +46,4 @@ class ListViewActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityListViewBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        loadCountries()
-
-        val adapter = CountryAdapter(this, countries)
-        binding.listview.adapter = adapter
-
-        binding.listview.setOnItemClickListener { adapterView, view, i, l ->
-            val intent = Intent(baseContext, CountryViewActivity::class.java)
-            intent.putExtra("country", countries[i])
-            startActivity(intent)
-        }
-    }
 }

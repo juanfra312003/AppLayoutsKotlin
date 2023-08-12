@@ -12,6 +12,13 @@ class TicTacToeActivity : AppCompatActivity() {
     var player = 1
     var board = charArrayOf('-', '-', '-', '-', '-','-','-','-','-')
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityTicTacToeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        buttonsAndPlayAgainActions(binding)
+    }
+
     fun checkWinner (): Int {
         when {
             //Check the vertical ways to win
@@ -230,13 +237,6 @@ class TicTacToeActivity : AppCompatActivity() {
                     binding.b9.text = "O"
             }
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityTicTacToeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        buttonsAndPlayAgainActions(binding)
     }
 
     fun buttonsAndPlayAgainActions(binding : ActivityTicTacToeBinding){

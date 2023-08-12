@@ -12,6 +12,16 @@ import com.example.taller_uno.databinding.ActivityTicTacToeBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.buttonTicTacToe.setOnClickListener{buttonTicTacToeAction()}
+        binding.buttonRandomGreet.setOnClickListener { buttonFrameActivity(binding) }
+        binding.buttonCountries.setOnClickListener{buttonCountriesAction()}
+    }
+
     fun buttonTicTacToeAction(){
         var intent = Intent (baseContext, TicTacToeActivity::class.java)
         startActivity(intent)
@@ -33,15 +43,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.buttonTicTacToe.setOnClickListener{buttonTicTacToeAction()}
-        binding.buttonRandomGreet.setOnClickListener { buttonFrameActivity(binding) }
-        binding.buttonCountries.setOnClickListener{buttonCountriesAction()}
     }
 }
