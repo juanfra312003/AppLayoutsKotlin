@@ -43,8 +43,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonRandomGreet"
-        app:layout_constraintVertical_bias="0.21" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRandomGreet"
+        app:layout_constraintVertical_bias="0.063" />
 
     <Button
         android:id="@+id/buttonCountries"
@@ -55,7 +55,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinnerRandomGreet"
-        app:layout_constraintVertical_bias="0.264" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerRandomGreet"
+        app:layout_constraintVertical_bias="0.081" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
